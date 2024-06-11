@@ -1,3 +1,3 @@
 module nuxxian/mol-clone/server
 
-go 1.21.10
+go 1.22.4

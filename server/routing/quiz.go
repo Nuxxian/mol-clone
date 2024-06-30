@@ -29,6 +29,17 @@ func AddAnswer(c *fiber.Ctx) error {
 	return c.Status(200).
 		JSON(fiber.Map{"status": "succes", "message": "entry added"})
 }
+func GetAnswers(c *fiber.Ctx) error {
+	if data, err := db.GetEntries(c.Params("id")); err != nil {
+        fmt.Println(err)
+		return c.Status(fiber.StatusBadRequest).
+			JSON(fiber.Map{"status": "unsuccesful", "message": "db err adddrink: " + err.Error()})
+	} else {
+
+        return c.Status(200).
+            JSON(fiber.Map{"status": "succes", "message": "entry added", "data": data})
+    }
+}
 //
 // func GetDrinksUser(c *fiber.Ctx) error {
 // 	drinks, err := db.GetDrinksUser()

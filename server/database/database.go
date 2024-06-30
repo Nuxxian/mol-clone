@@ -51,19 +51,22 @@ func AddEntry(entry models.QuizEntry, ID string) error {
     return err
 }
 
-func GetEntries(ID string) []models.QuizEntry {
+func GetEntries(ID string) ([]models.QuizEntry, error) {
     ref := database.NewRef(ID + "/entries")
     results, err := ref.OrderByValue().GetOrdered(ctx)
     if err != nil {
-        log.Fatalln("Error querying database:", err)
+        return []models.QuizEntry{}, err
     }
     var res []models.QuizEntry
     for _, r := range results {
         var d models.QuizEntry
         if err := r.Unmarshal(&d); err != nil {
-            log.Fatalln("Error unmarshaling result:", err)
+            return []models.QuizEntry{}, err
         }
         res = append(res, d)
     }
-    return res
+    return res, nil
 }
+
+
+

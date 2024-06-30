@@ -28,7 +28,7 @@ func routerHandlers(router *fiber.App) {
 func Route() {
 	app := fiber.New()
 	app.Use(cors.New(cors.Config{
-        AllowOrigins: "http://localhost:3001, http://localhost:3000, https://nuxx.be, https://demol-clone-dashboard.web.app/, https://demol-clone.web.app/",
+        AllowOrigins: "http://localhost:3001, http://localhost:3000, https://nuxx.be, https://demol-clone-dashboard.web.app/, https://demol-clone.web.app/ https://demol-dashboard.nuxx.be/, https://demol.nuxx.be/",
 		AllowMethods: "POST GET DELETE PUT",
 		AllowHeaders: "Origin, Content-Type, Accept, Authorization",
 	}))

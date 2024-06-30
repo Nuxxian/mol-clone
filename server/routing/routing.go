@@ -15,6 +15,7 @@ func routerHandlers(router *fiber.App) {
 	// drinks.Get("/add/:name", AddDrink)
 	// drinks.Post("/update", UpdateDrink)
     router.Post("/answer/:id", AddAnswer)
+    router.Get("/", default)
 
 	port := os.Getenv("PORT")
 	if port == "" {

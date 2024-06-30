@@ -8,6 +8,10 @@ import (
 	"nuxxian/mol-clone/server/models"
 )
 
+func Default(c *fiber.Ctx) error {
+	return c.Status(200).
+		JSON(fiber.Map{"status": "succes", "message": "Hello Server"})
+}
 func AddAnswer(c *fiber.Ctx) error {
 	req := new(models.QuizEntry)
 	if err := c.BodyParser(req); err != nil {

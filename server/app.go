@@ -1,14 +1,12 @@
 package main
 
 import (
-	"net/http"
-	"os"
+	"nuxxian/mol-clone/server/database"
+	"nuxxian/mol-clone/server/routing"
 )
 
 func main() {
-	router := http.NewServeMux()
-
-	server := http.Server{Addr: ":" + os.Getenv("PORT"), Handler: router}
-    server.ListenAndServe()
-	return
+	database.Database()
+	routing.Route()
 }
+
